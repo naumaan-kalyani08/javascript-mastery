@@ -6,6 +6,7 @@ const Header = () => {
     <div>
       <Link to="/">Home</Link>
       <Link to="/conditional-concept">Conditional concept</Link>
+      <Link to="loops">Loop Concepts </Link>
     </div>
   );
 };
