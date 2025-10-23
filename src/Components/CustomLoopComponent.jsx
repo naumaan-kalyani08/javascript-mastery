@@ -81,9 +81,30 @@ const CustomLoopComponent = () => {
     }
     console.log("largest number is:", largest);
   };
+
+  const forInLoopPracitce = () => {
+    let userInfo = {
+      name: "John",
+      age: 30,
+      city: "New York",
+    };
+
+    for (let CustomKey in userInfo) {
+      console.log(CustomKey);
+    }
+  };
+
+  const forOfLoopPractice = () => {
+    let colors = ["red", "green", "blue"];
+    for (let [index, colorValues] of colors) {
+      console.log(`array value ${colorValues} with index ${index} `);
+    }
+  };
   useEffect(() => {
     sumOfEvenNumber();
     largetOfNumber();
+    forInLoopPracitce();
+    forOfLoopPractice();
   }, []);
   return (
     <div>
