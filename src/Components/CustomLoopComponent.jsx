@@ -69,6 +69,22 @@ const CustomLoopComponent = () => {
     } while (i <= 50);
     console.log("total", total);
   };
+
+  //benefit no need to console log each time for each value that do exists in an array
+  const practiceForEachLoop = () => {
+    const fruits = [
+      "apple",
+      "banana",
+      "kiwi",
+      "orange",
+      "pomogrenate",
+      "pear",
+      "chikoo",
+      "pineapple",
+    ];
+
+    fruits.forEach((fruit) => console.log(fruit));
+  };
   //from this a new concept is found to be learn
   // a technique to fing the largest number from an array
   const largetOfNumber = () => {
@@ -105,6 +121,7 @@ const CustomLoopComponent = () => {
     largetOfNumber();
     forInLoopPracitce();
     forOfLoopPractice();
+    practiceForEachLoop();
   }, []);
   return (
     <div>
