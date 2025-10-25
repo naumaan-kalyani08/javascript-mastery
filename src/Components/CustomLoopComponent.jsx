@@ -116,12 +116,23 @@ const CustomLoopComponent = () => {
       console.log(`array value ${colorValues} with index ${index} `);
     }
   };
+
+  const nestedLoopPractice = () => {
+    for (let i = 6; i >= 1; i--) {
+      let row = "";
+      for (let j = 1; j <= i; j++) {
+        row += "* ";
+      }
+      console.log(row);
+    }
+  };
   useEffect(() => {
     sumOfEvenNumber();
     largetOfNumber();
     forInLoopPracitce();
     forOfLoopPractice();
     practiceForEachLoop();
+    nestedLoopPractice();
   }, []);
   return (
     <div>
