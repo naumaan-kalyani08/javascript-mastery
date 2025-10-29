@@ -2,6 +2,17 @@ import { useState } from "react";
 
 const ArrayCocept = () => {
   const [NumberArray, setNumberArray] = useState([1, 2, 3, 4, 5]);
+  const [AlphabetNumber, setAlphabetNumber] = useState([
+    "a",
+    "c",
+    "d",
+    "e",
+    "b",
+    "n",
+  ]);
+  const [RandomNumber, setRandomNumber] = useState([
+    34, 12, 5, 67, 89, 2, 1, 0, 100, 23,
+  ]);
   const PushExample = () => {
     NumberArray.push(6, 7, 8, 9);
     setNumberArray([...NumberArray]);
@@ -19,8 +30,21 @@ const ArrayCocept = () => {
     setNumberArray([...NumberArray]);
   };
   const SpliceExaple = () => {
-    NumberArray.splice(2, 0, 2.5);
+    NumberArray.splice(2, 0, 2.5, 2.75);
     setNumberArray([...NumberArray]);
+  };
+  const sortSimpleExample = () => {
+    AlphabetNumber.sort();
+    setAlphabetNumber([...AlphabetNumber]);
+  };
+  const sortNumberExampleAscending = () => {
+    // numArray.sort((a,b)=>a-b)
+    RandomNumber.sort((a, b) => a - b);
+    setRandomNumber([...RandomNumber]);
+  };
+  const sortNumberExampleDescending = () => {
+    RandomNumber.sort((a, b) => b - a);
+    setRandomNumber([...RandomNumber]);
   };
   return (
     <div>
@@ -78,6 +102,13 @@ const ArrayCocept = () => {
       <div className="">
         <p>Current Array</p>
         <p>{NumberArray}</p>
+        <p className="inline-block bg-green-100 text-green-500 font-bold mb-1 p-2">
+          {AlphabetNumber}
+        </p>
+        <br />
+        <p className="p-2 inline-block bg-red-100 text-red-500 font-bold">
+          {RandomNumber}
+        </p>
       </div>
       <ol>
         <li>
@@ -129,6 +160,26 @@ const ArrayCocept = () => {
               </td>
               <td>
                 <button onClick={SpliceExaple}>Splice Example</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Sort</td>
+              <td>
+                it is used to arrange the elements of and array in a specific
+                order either ascending or descending. By default, the sort()
+                method sorts the elements as strings in alphabetcial manner such
+                as 'a' 'b' 'c' etc and so on like this. to sort in number we
+                need to compare value by providing a compare function.
+              </td>
+              <td>
+                <button onClick={sortSimpleExample}>Sort Example</button>
+                <button onClick={sortNumberExampleAscending}>
+                  SOrt num example
+                </button>
+                <button onClick={sortNumberExampleDescending}>
+                  SOrt num example
+                </button>
               </td>
             </tr>
           </table>
