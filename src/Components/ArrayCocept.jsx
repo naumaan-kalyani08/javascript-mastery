@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const ArrayCocept = () => {
-  const [NumberArray, setNumberArray] = useState([1, 2, 3, 4, 5]);
+  const [NumberArray, setNumberArray] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9]);
   const [AlphabetNumber, setAlphabetNumber] = useState([
     "a",
     "c",
@@ -10,41 +10,70 @@ const ArrayCocept = () => {
     "b",
     "n",
   ]);
+  const [reverseArray, setReverseArray] = useState(["a", "b", "c", "d", "e"]);
+  const reverseArrayExample = () => {
+    setReverseArray([...reverseArray].reverse());
+  };
   const [RandomNumber, setRandomNumber] = useState([
     34, 12, 5, 67, 89, 2, 1, 0, 100, 23,
   ]);
   const PushExample = () => {
     NumberArray.push(6, 7, 8, 9);
+    // add a number from last of array
     setNumberArray([...NumberArray]);
   };
+  //remove a number from last of array
   const PopExample = () => {
     NumberArray.pop(3);
     setNumberArray([...NumberArray]);
   };
+  // remove a number from start of an array
   const shiftExample = () => {
     NumberArray.shift();
     setNumberArray([...NumberArray]);
   };
+
+  //add a number from start of an array
   const UnShiftExample = () => {
     NumberArray.unshift(0);
     setNumberArray([...NumberArray]);
   };
+  // add/remove a number from array
   const SpliceExaple = () => {
     NumberArray.splice(2, 0, 2.5, 2.75);
     setNumberArray([...NumberArray]);
   };
+  // sort an array inistially from ascending order
   const sortSimpleExample = () => {
     AlphabetNumber.sort();
     setAlphabetNumber([...AlphabetNumber]);
   };
+  // sort an array in ascending order
   const sortNumberExampleAscending = () => {
     // numArray.sort((a,b)=>a-b)
     RandomNumber.sort((a, b) => a - b);
     setRandomNumber([...RandomNumber]);
   };
+  //  descending order
   const sortNumberExampleDescending = () => {
     RandomNumber.sort((a, b) => b - a);
     setRandomNumber([...RandomNumber]);
+  };
+  //fills up with static value
+  const FillExample = () => {
+    RandomNumber.fill(0);
+    setRandomNumber([...RandomNumber]);
+  };
+  const copyWithinExample = () => {
+    // [1, 2, 3, 4, 5,6,7,8,9]
+    // [0, 1, 2, 3, 4,5,6,7,8]
+    NumberArray.copyWithin(0, 2, 6);
+    setRandomNumber([...RandomNumber]);
+  };
+
+  const MapExample = () => {
+    const result = NumberArray.map((num) => num * 2);
+    setNumberArray(result);
   };
   return (
     <div>
@@ -106,8 +135,11 @@ const ArrayCocept = () => {
           {AlphabetNumber}
         </p>
         <br />
-        <p className="p-2 inline-block bg-red-100 text-red-500 font-bold">
+        <p className="p-2 inline-block bg-red-100 text-red-500 font-bold mb-1">
           {RandomNumber}
+        </p>
+        <p className=" p-2 inline-block bg-blue-100 text-blue-500 font-bold mb-1">
+          {reverseArray}
         </p>
       </div>
       <ol>
@@ -182,9 +214,66 @@ const ArrayCocept = () => {
                 </button>
               </td>
             </tr>
+            <tr>
+              <td>Reverse</td>
+              <td>it is use to reverse the order of elements in an array</td>
+              <td>
+                <button onClick={reverseArrayExample}>Reverse</button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <code>fill</code>
+              </td>
+              <td>
+                fills an array with the **same static value** for a range.
+                <mark>
+                  its purpose in real life is rest a form scoreboard or
+                  somewhere where on a click only a certain data should be shown
+                </mark>
+              </td>
+              <td>
+                <button onClick={FillExample}>Fill</button>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                it is used to copy a specific or range value in that array and
+                paste same as well in it too at the position which is have been
+                described in the function{" "}
+                <mark>copyWithin(target,start,end)</mark>
+                target: index at which to copy the sequence to. start:index at
+                which to start copying elements from. end:index at which to end
+                copying elements from.(end not included) start less than end
+              </td>
+              <td>
+                <button onClick={copyWithinExample}>Copywithin</button>
+              </td>
+            </tr>
           </table>
         </li>
         <li>Non-mutable</li>
+        <table>
+          <tr>
+            <th>sr no</th>
+            <th>Method</th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>map</td>
+            <td>
+              This function is used to create a new array by applying function
+              to every element{" "}
+              <mark>array.map(callback(element, index, array))</mark>
+            </td>
+            <td>
+              <button onClick={MapExample}>check console</button>
+            </td>
+          </tr>
+        </table>
       </ol>
     </div>
   );
