@@ -40,7 +40,11 @@ const ArrayCocept = () => {
   };
   // add/remove a number from array
   const SpliceExaple = () => {
+    //NumberArray [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
     NumberArray.splice(2, 0, 2.5, 2.75);
+    // splice(2, 0, 2.5, 2.75) means start at index 2, remove 0 elements, and add 2.5 and 2.75
+    //if we mention 1 instead of 0 then it will remove 1 element from index 2
     setNumberArray([...NumberArray]);
   };
   // sort an array inistially from ascending order
@@ -69,6 +73,16 @@ const ArrayCocept = () => {
     // [0, 1, 2, 3, 4,5,6,7,8]
     NumberArray.copyWithin(0, 2, 6);
     setRandomNumber([...RandomNumber]);
+  };
+  const SliceExaple = () => {
+    //NumberArray [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    //NumberArray [0, 1, 2, 3, 4, 5, 6, 7, 8]
+    const newValue = NumberArray.slice(2, 5);
+    // slice (2,5) means start at index 2 and end at index 5 (not included 5)
+    //slice(2) means start at index 2 and go till end of array
+    // slice() means copy the whole array
+    // slice(-4) means start from index 4 from last
+    setNumberArray(newValue);
   };
 
   const MapExample = () => {
@@ -271,6 +285,17 @@ const ArrayCocept = () => {
             </td>
             <td>
               <button onClick={MapExample}>check console</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Slice</td>
+            <td>
+              use to make a shallow copy of a portion of an array. (shallow
+              meand it copies the elements but not nested objects or arrays. in
+              short same element new array )
+            </td>
+            <td>
+              <button onClick={SliceExaple}>Slice example</button>
             </td>
           </tr>
         </table>
