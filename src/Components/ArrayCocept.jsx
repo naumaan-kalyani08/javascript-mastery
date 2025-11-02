@@ -85,8 +85,17 @@ const ArrayCocept = () => {
     setNumberArray(newValue);
   };
 
+  const FilterExample = () => {
+    const result = NumberArray.filter((num) => num % 2 === 0);
+    setNumberArray(result);
+  };
   const MapExample = () => {
     const result = NumberArray.map((num) => num * 2);
+    setNumberArray(result);
+  };
+
+  const reduceExample = () => {
+    const result = NumberArray.reduce((a, b) => a + b, 0);
     setNumberArray(result);
   };
   return (
@@ -296,6 +305,26 @@ const ArrayCocept = () => {
             </td>
             <td>
               <button onClick={SliceExaple}>Slice example</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Filter</td>
+            <td>
+              Filter function provides a ne array with values that pass a test
+              provided by
+            </td>
+            <td>
+              <button onClick={FilterExample}>Filter of number </button>
+            </td>
+          </tr>
+          <tr>
+            <td>Reduce</td>
+            <td>
+              uses to combine all elements of an array into a single value by
+              applying a reducer function to each element in the array.
+            </td>
+            <td>
+              <button onClick={reduceExample}>Reduce Example</button>
             </td>
           </tr>
         </table>
