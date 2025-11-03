@@ -1,6 +1,13 @@
 import { useState } from "react";
 
 const ArrayCocept = () => {
+  const [nestedArray, SetNestedArray] = useState([
+    1,
+    2,
+    3,
+    [4, 5, 6],
+    [7, 8, 9],
+  ]);
   const [NumberArray, setNumberArray] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9]);
   const [AlphabetNumber, setAlphabetNumber] = useState([
     "a",
@@ -98,6 +105,39 @@ const ArrayCocept = () => {
     const result = NumberArray.reduce((a, b) => a + b, 0);
     setNumberArray(result);
   };
+
+  const ConcatExmapl = () => {
+    const result = NumberArray.concat(reverseArray, RandomNumber);
+    setNumberArray(result);
+  };
+  const spreadExample = () => {
+    const result = [...NumberArray, ...reverseArray, ...RandomNumber];
+    setNumberArray(result);
+  };
+  const nestedArrayExample = () => {
+    const result = nestedArray.flat();
+    SetNestedArray(result);
+  };
+  const JoinExample = () => {
+    const result = NumberArray.join("-");
+    setNumberArray(result);
+  };
+  const FlatMapExample = () => {
+    const result = NumberArray.flatMap((x) => [x, x * 2]);
+    setNumberArray(result);
+  };
+  const findExample = () => {
+    const result = NumberArray.find((x) => x > 6);
+    setNumberArray(result);
+  };
+  const findIndex = () => {
+    let result = NumberArray.findIndex((x) => x > 7);
+    setNumberArray(result);
+  };
+  const indexOfExample = () => {
+    let result = NumberArray.indexOf(7);
+    setNumberArray(result);
+  };
   return (
     <div>
       <h1>Array</h1>
@@ -164,6 +204,10 @@ const ArrayCocept = () => {
         <p className=" p-2 inline-block bg-blue-100 text-blue-500 font-bold mb-1">
           {reverseArray}
         </p>
+        {/* <p className="">{nestedArray}</p> */}
+        {nestedArray.flat().map((num) => (
+          <p key={num}> {num}</p>
+        ))}
       </div>
       <ol>
         <li>
@@ -325,6 +369,103 @@ const ArrayCocept = () => {
             </td>
             <td>
               <button onClick={reduceExample}>Reduce Example</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Concat </td>
+            <td>
+              Merges two or more array immutably (safely, without changing
+              source data)
+              <mark>
+                where to use: In data processing tasks where multiple datasets
+                need to be, building UI lists ,form handling , string
+                templating. etc
+              </mark>
+              <span>
+                conclusion: not critical in modern js - use spread
+                operator[...arr1,...arr2] instead for cleaner ,faster code
+              </span>
+            </td>
+            <td>
+              <button onClick={ConcatExmapl}>Concat Example</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Flat</td>
+            <td>it is used to flatten nested arrays into a single array</td>
+            <td>
+              <button onClick={nestedArrayExample}>Flat Example</button>
+            </td>
+          </tr>
+          <tr>
+            <td>spread</td>
+            <td>it is used to merge multiple arrays into a single array</td>
+            <td>
+              <button onClick={spreadExample}>SPread example</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Join</td>
+            <td></td>
+            <td>
+              <button onClick={JoinExample}> Join</button>
+            </td>
+          </tr>
+          <tr>
+            <td>FlatMap</td>
+            <td></td>
+
+            <td>
+              <button onClick={FlatMapExample}>FlatMapExample</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Find</td>
+            <td>returns the value that first satisfy the condition</td>
+            <td>
+              <button onClick={findExample}>findExample</button>
+            </td>
+          </tr>
+          <tr>
+            <td>findIndex</td>
+            <td>
+              it returns index of a value that first satisfy the condition
+            </td>
+            <td>
+              <button onClick={findIndex}>Find Index</button>
+            </td>
+          </tr>
+          <tr>
+            <td>IndexOf</td>
+            <td>returns the index of exact value that is get match</td>
+            <td>
+              <button onClick={indexOfExample}>index of</button>
+            </td>
+          </tr>
+          <tr>
+            <td>toSorted</td>
+            <td>
+              Method that sorts an array and provide a new array for that rather
+              changing the existing one
+            </td>
+            <td>
+              <button>To sorted</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>toReversed</td>
+            <td>provides a new array and that array value is in reverse</td>
+            <td>
+              <button>Reverse Example</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>toSplice</td>
+            <td>
+              Provides a new array witth the value that has been to be
+              remove/added
             </td>
           </tr>
         </table>
