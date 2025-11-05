@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Play, RefreshCw } from "lucide-react";
+import CustomLoopComponent from "./CustomLoopComponent";
 
 const LoopConcepts = () => {
   const [activeTab, setActiveTab] = useState("for");
@@ -205,6 +206,7 @@ console.log('Sum:', sum);`,
                 Calculating a single value from an array
               </p>
             </div>
+            <CustomLoopComponent />
           </div>
         </div>
       </div>
