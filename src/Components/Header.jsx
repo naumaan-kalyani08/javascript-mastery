@@ -23,6 +23,9 @@ const Header = () => {
         <Link className="" to="/array">
           Array Concept
         </Link>
+        <Link className="" to="/real-examples">
+          Real exmples
+        </Link>
       </div>
     </div>
   );

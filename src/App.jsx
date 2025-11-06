@@ -1,4 +1,3 @@
-import Header from "./Components/Header";
 import AppRouter from "./Router/Routes";
 
 const App = () => {

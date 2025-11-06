@@ -6,6 +6,7 @@ import LoopConcepts from "../Components/LoopConcepts";
 import "../style/Common.css";
 import CustomLoopComponent from "../Components/CustomLoopComponent";
 import ArrayCocept from "../Components/ArrayCocept";
+import RealWorldPractice from "../Components/RealWorldPractice";
 const AppRouter = () => {
   return (
     <BrowserRouter>
@@ -17,6 +18,7 @@ const AppRouter = () => {
         <Route path="/loops" element={<LoopConcepts />} />
         <Route path="/custom-loops" element={<CustomLoopComponent />} />
         <Route path="/array" element={<ArrayCocept />} />
+        <Route path="/real-examples" element={<RealWorldPractice />} />
       </Routes>
     </BrowserRouter>
   );
