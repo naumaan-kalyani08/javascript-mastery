@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import JavascriptFunctions from "./JavascriptFunctions";
 
 const CustomLoopComponent = () => {
   const [ForLoop, setForLoop] = useState(null);
@@ -170,6 +171,7 @@ const CustomLoopComponent = () => {
       {ReverseCount?.map((value) => (
         <p>{value}</p>
       ))}
+      <JavascriptFunctions />
     </div>
   );
 };
