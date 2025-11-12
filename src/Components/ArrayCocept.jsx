@@ -1,15 +1,16 @@
 import { useState } from "react";
 
 const ArrayCocept = () => {
-  const [nestedArray, SetNestedArray] = useState([
+  // Initial States
+  const [nestedArray, setNestedArray] = useState([
     1,
     2,
     3,
     [4, 5, 6],
     [7, 8, 9],
   ]);
-  const [NumberArray, setNumberArray] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-  const [AlphabetNumber, setAlphabetNumber] = useState([
+  const [numberArray, setNumberArray] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  const [alphabetArray, setAlphabetArray] = useState([
     "a",
     "c",
     "d",
@@ -18,458 +19,546 @@ const ArrayCocept = () => {
     "n",
   ]);
   const [reverseArray, setReverseArray] = useState(["a", "b", "c", "d", "e"]);
-  const reverseArrayExample = () => {
-    setReverseArray([...reverseArray].reverse());
-  };
-  const [RandomNumber, setRandomNumber] = useState([
+  const [randomNumbers, setRandomNumbers] = useState([
     34, 12, 5, 67, 89, 2, 1, 0, 100, 23,
   ]);
-  const PushExample = () => {
-    NumberArray.push(6, 7, 8, 9);
-    // add a number from last of array
-    setNumberArray([...NumberArray]);
+
+  // Helper to reset all arrays
+  const resetAll = () => {
+    setNumberArray([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    setAlphabetArray(["a", "c", "d", "e", "b", "n"]);
+    setReverseArray(["a", "b", "c", "d", "e"]);
+    setRandomNumbers([34, 12, 5, 67, 89, 2, 1, 0, 100, 23]);
+    setNestedArray([1, 2, 3, [4, 5, 6], [7, 8, 9]]);
   };
-  //remove a number from last of array
-  const PopExample = () => {
-    NumberArray.pop(3);
-    setNumberArray([...NumberArray]);
+
+  // === Mutable Methods ===
+  const pushExample = () => {
+    const newArr = [...numberArray, 10, 11, 12];
+    setNumberArray(newArr);
   };
-  // remove a number from start of an array
+
+  const popExample = () => {
+    const newArr = numberArray.slice(0, -1);
+    setNumberArray(newArr);
+  };
+
   const shiftExample = () => {
-    NumberArray.shift();
-    setNumberArray([...NumberArray]);
+    const newArr = numberArray.slice(1);
+    setNumberArray(newArr);
   };
 
-  //add a number from start of an array
-  const UnShiftExample = () => {
-    NumberArray.unshift(0);
-    setNumberArray([...NumberArray]);
+  const unshiftExample = () => {
+    const newArr = [0, ...numberArray];
+    setNumberArray(newArr);
   };
-  // add/remove a number from array
-  const SpliceExaple = () => {
-    //NumberArray [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-    NumberArray.splice(2, 0, 2.5, 2.75);
-    // splice(2, 0, 2.5, 2.75) means start at index 2, remove 0 elements, and add 2.5 and 2.75
-    //if we mention 1 instead of 0 then it will remove 1 element from index 2
-    setNumberArray([...NumberArray]);
+  const spliceExample = () => {
+    const newArr = [...numberArray];
+    newArr.splice(2, 0, 2.5, 2.75); // Insert at index 2
+    setNumberArray(newArr);
   };
-  // sort an array inistially from ascending order
-  const sortSimpleExample = () => {
-    AlphabetNumber.sort();
-    setAlphabetNumber([...AlphabetNumber]);
+
+  const sortAlphabetExample = () => {
+    const newArr = [...alphabetArray].sort();
+    setAlphabetArray(newArr);
   };
-  // sort an array in ascending order
-  const sortNumberExampleAscending = () => {
-    // numArray.sort((a,b)=>a-b)
-    RandomNumber.sort((a, b) => a - b);
-    setRandomNumber([...RandomNumber]);
+
+  const sortNumbersAsc = () => {
+    const newArr = [...randomNumbers].sort((a, b) => a - b);
+    setRandomNumbers(newArr);
   };
-  //  descending order
-  const sortNumberExampleDescending = () => {
-    RandomNumber.sort((a, b) => b - a);
-    setRandomNumber([...RandomNumber]);
+
+  const sortNumbersDesc = () => {
+    const newArr = [...randomNumbers].sort((a, b) => b - a);
+    setRandomNumbers(newArr);
   };
-  //fills up with static value
-  const FillExample = () => {
-    RandomNumber.fill(0);
-    setRandomNumber([...RandomNumber]);
+
+  const fillExample = () => {
+    const newArr = [...randomNumbers].fill(0, 2, 6); // Fill from index 2 to 5
+    setRandomNumbers(newArr);
   };
+
   const copyWithinExample = () => {
-    // [1, 2, 3, 4, 5,6,7,8,9]
-    // [0, 1, 2, 3, 4,5,6,7,8]
-    NumberArray.copyWithin(0, 2, 6);
-    setRandomNumber([...RandomNumber]);
-  };
-  const SliceExaple = () => {
-    //NumberArray [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    //NumberArray [0, 1, 2, 3, 4, 5, 6, 7, 8]
-    const newValue = NumberArray.slice(2, 5);
-    // slice (2,5) means start at index 2 and end at index 5 (not included 5)
-    //slice(2) means start at index 2 and go till end of array
-    // slice() means copy the whole array
-    // slice(-4) means start from index 4 from last
-    setNumberArray(newValue);
+    const newArr = [...numberArray].copyWithin(0, 3, 6);
+    setNumberArray(newArr);
   };
 
-  const FilterExample = () => {
-    const result = NumberArray.filter((num) => num % 2 === 0);
+  const reverseExample = () => {
+    const newArr = [...reverseArray].reverse();
+    setReverseArray(newArr);
+  };
+
+  // === Immutable Methods ===
+  const mapExample = () => {
+    const result = numberArray.map((num) => num * 2);
     setNumberArray(result);
   };
-  const MapExample = () => {
-    const result = NumberArray.map((num) => num * 2);
+
+  const filterExample = () => {
+    const result = numberArray.filter((num) => num % 2 === 0);
     setNumberArray(result);
   };
 
   const reduceExample = () => {
-    const result = NumberArray.reduce((a, b) => a + b, 0);
+    const sum = numberArray.reduce((acc, curr) => acc + curr, 0);
+    alert(`Sum: ${sum}`);
+    console.log("Reduce Result (Sum):", sum);
+  };
+
+  const sliceExample = () => {
+    const result = numberArray.slice(2, 6);
     setNumberArray(result);
   };
 
-  const ConcatExmapl = () => {
-    const result = NumberArray.concat(reverseArray, RandomNumber);
+  const concatExample = () => {
+    const result = numberArray.concat(reverseArray, randomNumbers);
     setNumberArray(result);
   };
+
   const spreadExample = () => {
-    const result = [...NumberArray, ...reverseArray, ...RandomNumber];
+    const result = [...numberArray, ...reverseArray, ...randomNumbers];
     setNumberArray(result);
   };
-  const nestedArrayExample = () => {
+
+  const flatExample = () => {
     const result = nestedArray.flat();
-    SetNestedArray(result);
+    setNestedArray(result);
   };
-  const JoinExample = () => {
-    const result = NumberArray.join("-");
+
+  const joinExample = () => {
+    const result = numberArray.join(" - ");
+    alert(`Joined: ${result}`);
+    console.log("Join Result:", result);
+  };
+
+  const flatMapExample = () => {
+    const result = numberArray.flatMap((x) => [x, x * 2]);
     setNumberArray(result);
   };
-  const FlatMapExample = () => {
-    const result = NumberArray.flatMap((x) => [x, x * 2]);
-    setNumberArray(result);
-  };
+
   const findExample = () => {
-    const result = NumberArray.find((x) => x > 6);
-    setNumberArray(result);
+    const result = numberArray.find((x) => x > 6);
+    alert(`First number > 6: ${result}`);
+    console.log("Find Result:", result);
   };
-  const findIndex = () => {
-    let result = NumberArray.findIndex((x) => x > 7);
-    setNumberArray(result);
+
+  const findIndexExample = () => {
+    const result = numberArray.findIndex((x) => x > 7);
+    alert(`Index of first > 7: ${result}`);
+    console.log("FindIndex Result:", result);
   };
+
   const indexOfExample = () => {
-    let result = NumberArray.indexOf(7);
-    setNumberArray(result);
+    const result = numberArray.indexOf(7);
+    alert(`Index of 7: ${result}`);
+    console.log("IndexOf Result:", result);
   };
+
+  // === Modern Immutable Methods ===
+  const toSortedExample = () => {
+    const sorted = [...randomNumbers].toSorted((a, b) => a - b);
+    setRandomNumbers(sorted);
+  };
+
+  const toReversedExample = () => {
+    const reversed = [...reverseArray].toReversed();
+    setReverseArray(reversed);
+  };
+
+  const toSplicedExample = () => {
+    const spliced = numberArray.toSpliced(2, 1, 99);
+    setNumberArray(spliced);
+  };
+
   return (
-    <div>
-      <h1>Array</h1>
-      <ul>
-        <li>
-          It is a data sctrucutre in javascript that is used to store mulitple
-          values in a single variable
-        </li>
-        <li>
-          it can store data of different data types like string, number,
-          boolean, object,function , a nested array etc
-        </li>
-        <li>
-          its a zero based index data structure means the first element of the
-          array is stored at index 0.
-        </li>
-        <li>
-          as it is a index based data structure then we can access the elements
-          of the array using their index.
-        </li>
-        <li>
-          arrays are mutable in javascript means we can change the elements of
-          the array after its creation.
-        </li>
-        <li>
-          arrays have many built in methods like
-          push,pop,shift,unshift,map,filter,reduce etc
-        </li>
-        <li>
-          arrays can be created using array literal syntax or using array
-          constructor
-        </li>
-        <li>
-          arrays can be iterated using for loop,forEach loop,map method etc
-        </li>
-        <li>
-          arrays can be nested inside another array to create multidimensional
-          arrays
-        </li>
-        <li>
-          arrays are commonly used in javascript for storing and manipulating
-        </li>
-        <li>arrays can be checked using Array.isArray() method</li>
-        <li>
-          arrays can be converted to string using toString() or join() method
-        </li>
-        <li>arrays can be spreaded using spread operator (...)</li>
-        <li>arrays can be destructured to extract values into variables</li>
-        <li>
-          arrays can be concatenated using concat() method or spread operators
-        </li>
-      </ul>
-      <p>Array Methods</p>
-      <div className="">
-        <p>Current Array</p>
-        <p>{NumberArray}</p>
-        <p className="inline-block bg-green-100 text-green-500 font-bold mb-1 p-2">
-          {AlphabetNumber}
-        </p>
-        <br />
-        <p className="p-2 inline-block bg-red-100 text-red-500 font-bold mb-1">
-          {RandomNumber}
-        </p>
-        <p className=" p-2 inline-block bg-blue-100 text-blue-500 font-bold mb-1">
-          {reverseArray}
-        </p>
-        {/* <p className="">{nestedArray}</p> */}
-        {nestedArray.flat().map((num) => (
-          <p key={num}> {num}</p>
-        ))}
-      </div>
-      <ol>
-        <li>
-          <b>Mutable (change the orignal array)</b>
-          <table>
-            <tr>
-              <th>Method</th>
-              <th>Description</th>
-              <th>Action</th>
-            </tr>
-            <tr>
-              <td>Push</td>
-              <td>add one or more element from the end of an array</td>
-              <th>
-                <button onClick={PushExample}>PushExample</button>
-              </th>
-            </tr>
-            <tr>
-              <td>Pop</td>
-              <td>remove one element from the end of an array</td>
-              <th>
-                <button onClick={PopExample}>PushExample</button>
-              </th>
-            </tr>
-            <tr>
-              <td>shift</td>
-              <td>
-                remove one or more element from the start of an Array. note this
-                method is not suggestable to use as this remove element from the
-                first so due to which index of each element changes. its not
-                issue when data is limited but do when data is huge
-              </td>
-              <th>
-                <button onClick={shiftExample}>Shift Example</button>
-              </th>
-            </tr>
-            <tr>
-              <td>unshift</td>
-              <td>Add one or more element from the start of an array</td>
-              <th>
-                <button onClick={UnShiftExample}>UnShift Example</button>
-              </th>
-            </tr>
-            <tr>
-              <td>Splice</td>
-              <td>
-                add/remove element from any posiition of an aaray.
-                array.Splice(index,deleteCount,addItem)
-              </td>
-              <td>
-                <button onClick={SpliceExaple}>Splice Example</button>
-              </td>
-            </tr>
+    <div className="p-6 max-w-7xl mx-auto font-sans">
+      <h1 className="text-3xl font-bold mb-4">JavaScript Array Concepts</h1>
 
-            <tr>
-              <td>Sort</td>
-              <td>
-                it is used to arrange the elements of and array in a specific
-                order either ascending or descending. By default, the sort()
-                method sorts the elements as strings in alphabetcial manner such
-                as 'a' 'b' 'c' etc and so on like this. to sort in number we
-                need to compare value by providing a compare function.
-              </td>
-              <td>
-                <button onClick={sortSimpleExample}>Sort Example</button>
-                <button onClick={sortNumberExampleAscending}>
-                  SOrt num example
-                </button>
-                <button onClick={sortNumberExampleDescending}>
-                  SOrt num example
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Reverse</td>
-              <td>it is use to reverse the order of elements in an array</td>
-              <td>
-                <button onClick={reverseArrayExample}>Reverse</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <code>fill</code>
-              </td>
-              <td>
-                fills an array with the **same static value** for a range.
-                <mark>
-                  its purpose in real life is rest a form scoreboard or
-                  somewhere where on a click only a certain data should be shown
-                </mark>
-              </td>
-              <td>
-                <button onClick={FillExample}>Fill</button>
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td>
-                it is used to copy a specific or range value in that array and
-                paste same as well in it too at the position which is have been
-                described in the function{" "}
-                <mark>copyWithin(target,start,end)</mark>
-                target: index at which to copy the sequence to. start:index at
-                which to start copying elements from. end:index at which to end
-                copying elements from.(end not included) start less than end
-              </td>
-              <td>
-                <button onClick={copyWithinExample}>Copywithin</button>
-              </td>
-            </tr>
+      {/* Reset Button */}
+      <button
+        onClick={resetAll}
+        className="mb-6 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+      >
+        Reset All Arrays
+      </button>
+
+      {/* Array Info */}
+      <section className="mb-8 bg-gray-50 p-4 rounded-lg">
+        <h2 className="text-xl font-semibold mb-2">About Arrays</h2>
+        <ul className="list-disc pl-6 space-y-1 text-sm">
+          <li>Zero-indexed collection of values</li>
+          <li>Can hold mixed data types</li>
+          <li>Mutable by default</li>
+          <li>Rich built-in methods: push, map, filter, etc.</li>
+          <li>Supports nesting (multi-dimensional)</li>
+          <li>
+            Use <code>Array.isArray()</code> to check type
+          </li>
+          <li>
+            Spread operator <code>...</code> for copying/merging
+          </li>
+        </ul>
+      </section>
+
+      {/* Live Arrays Display */}
+      <section className="mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="bg-green-50 p-3 rounded border border-green-200">
+          <p className="font-semibold text-green-800">Number Array</p>
+          <p className="font-mono text-sm">[{numberArray.join(", ")}]</p>
+        </div>
+        <div className="bg-blue-50 p-3 rounded border border-blue-200">
+          <p className="font-semibold text-blue-800">Alphabet Array</p>
+          <p className="font-mono text-sm">[{alphabetArray.join(", ")}]</p>
+        </div>
+        <div className="bg-red-50 p-3 rounded border border-red-200">
+          <p className="font-semibold text-red-800">Random Numbers</p>
+          <p className="font-mono text-sm">[{randomNumbers.join(", ")}]</p>
+        </div>
+        <div className="bg-purple-50 p-3 rounded border border-purple-200">
+          <p className="font-semibold text-purple-800">Reverse Array</p>
+          <p className="font-mono text-sm">[{reverseArray.join(", ")}]</p>
+        </div>
+        <div className="bg-yellow-50 p-3 rounded border border-yellow-200">
+          <p className="font-semibold text-yellow-800">Nested Array</p>
+          <p className="font-mono text-sm">[{nestedArray.flat().join(", ")}]</p>
+        </div>
+      </section>
+
+      {/* Mutable Methods */}
+      <section className="mb-10">
+        <h2 className="text-2xl font-bold mb-3 text-orange-600">
+          Mutable Methods (Modify Original)
+        </h2>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="border p-2 text-left">Method</th>
+                <th className="border p-2 text-left">Description</th>
+                <th className="border p-2">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="border p-2 font-mono">push()</td>
+                <td className="border p-2">Add to end</td>
+                <td className="border p-2">
+                  <button onClick={pushExample} className="btn-primary text-xs">
+                    Push 10,11,12
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="border p-2 font-mono">pop()</td>
+                <td className="border p-2">Remove from end</td>
+                <td className="border p-2">
+                  <button onClick={popExample} className="btn-danger text-xs">
+                    Pop
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="border p-2 font-mono">shift()</td>
+                <td className="border p-2">
+                  Remove from start (slow for large arrays)
+                </td>
+                <td className="border p-2">
+                  <button
+                    onClick={shiftExample}
+                    className="btn-warning text-xs"
+                  >
+                    Shift
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="border p-2 font-mono">unshift()</td>
+                <td className="border p-2">Add to start</td>
+                <td className="border p-2">
+                  <button
+                    onClick={unshiftExample}
+                    className="btn-primary text-xs"
+                  >
+                    Unshift 0
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="border p-2 font-mono">splice()</td>
+                <td className="border p-2">Add/remove at index</td>
+                <td className="border p-2">
+                  <button onClick={spliceExample} className="btn-info text-xs">
+                    Insert 2.5, 2.75
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="border p-2 font-mono">sort()</td>
+                <td className="border p-2">Sort in place</td>
+                <td className="border p-2 space-x-1">
+                  <button
+                    onClick={sortAlphabetExample}
+                    className="btn-secondary text-xs"
+                  >
+                    Sort Letters
+                  </button>
+                  <button
+                    onClick={sortNumbersAsc}
+                    className="btn-success text-xs"
+                  >
+                    Asc
+                  </button>
+                  <button
+                    onClick={sortNumbersDesc}
+                    className="btn-error text-xs"
+                  >
+                    Desc
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="border p-2 font-mono">reverse()</td>
+                <td className="border p-2">Reverse in place</td>
+                <td className="border p-2">
+                  <button
+                    onClick={reverseExample}
+                    className="btn-warning text-xs"
+                  >
+                    Reverse
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="border p-2 font-mono">fill()</td>
+                <td className="border p-2">Fill range with value</td>
+                <td className="border p-2">
+                  <button onClick={fillExample} className="btn-dark text-xs">
+                    Fill 0 (2-5)
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="border p-2 font-mono">copyWithin()</td>
+                <td className="border p-2">Copy range within array</td>
+                <td className="border p-2">
+                  <button
+                    onClick={copyWithinExample}
+                    className="btn-info text-xs"
+                  >
+                    Copy 3-5 to 0
+                  </button>
+                </td>
+              </tr>
+            </tbody>
           </table>
-        </li>
-        <li>Non-mutable</li>
-        <table>
-          <tr>
-            <th>sr no</th>
-            <th>Method</th>
-            <th>Description</th>
-            <th>Example</th>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>map</td>
-            <td>
-              This function is used to create a new array by applying function
-              to every element{" "}
-              <mark>array.map(callback(element, index, array))</mark>
-            </td>
-            <td>
-              <button onClick={MapExample}>check console</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Slice</td>
-            <td>
-              use to make a shallow copy of a portion of an array. (shallow
-              meand it copies the elements but not nested objects or arrays. in
-              short same element new array )
-            </td>
-            <td>
-              <button onClick={SliceExaple}>Slice example</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Filter</td>
-            <td>
-              Filter function provides a ne array with values that pass a test
-              provided by
-            </td>
-            <td>
-              <button onClick={FilterExample}>Filter of number </button>
-            </td>
-          </tr>
-          <tr>
-            <td>Reduce</td>
-            <td>
-              uses to combine all elements of an array into a single value by
-              applying a reducer function to each element in the array.
-            </td>
-            <td>
-              <button onClick={reduceExample}>Reduce Example</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Concat </td>
-            <td>
-              Merges two or more array immutably (safely, without changing
-              source data)
-              <mark>
-                where to use: In data processing tasks where multiple datasets
-                need to be, building UI lists ,form handling , string
-                templating. etc
-              </mark>
-              <span>
-                conclusion: not critical in modern js - use spread
-                operator[...arr1,...arr2] instead for cleaner ,faster code
-              </span>
-            </td>
-            <td>
-              <button onClick={ConcatExmapl}>Concat Example</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Flat</td>
-            <td>it is used to flatten nested arrays into a single array</td>
-            <td>
-              <button onClick={nestedArrayExample}>Flat Example</button>
-            </td>
-          </tr>
-          <tr>
-            <td>spread</td>
-            <td>it is used to merge multiple arrays into a single array</td>
-            <td>
-              <button onClick={spreadExample}>SPread example</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Join</td>
-            <td></td>
-            <td>
-              <button onClick={JoinExample}> Join</button>
-            </td>
-          </tr>
-          <tr>
-            <td>FlatMap</td>
-            <td></td>
+        </div>
+      </section>
 
-            <td>
-              <button onClick={FlatMapExample}>FlatMapExample</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Find</td>
-            <td>returns the value that first satisfy the condition</td>
-            <td>
-              <button onClick={findExample}>findExample</button>
-            </td>
-          </tr>
-          <tr>
-            <td>findIndex</td>
-            <td>
-              it returns index of a value that first satisfy the condition
-            </td>
-            <td>
-              <button onClick={findIndex}>Find Index</button>
-            </td>
-          </tr>
-          <tr>
-            <td>IndexOf</td>
-            <td>returns the index of exact value that is get match</td>
-            <td>
-              <button onClick={indexOfExample}>index of</button>
-            </td>
-          </tr>
-          <tr>
-            <td>toSorted</td>
-            <td>
-              Method that sorts an array and provide a new array for that rather
-              changing the existing one
-            </td>
-            <td>
-              <button>To sorted</button>
-            </td>
-          </tr>
+      {/* Immutable Methods */}
+      <section className="mb-10">
+        <h2 className="text-2xl font-bold mb-3 text-green-600">
+          Immutable Methods (Return New Array)
+        </h2>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-sm">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="border p-2 text-left">#</th>
+                <th className="border p-2 text-left">Method</th>
+                <th className="border p-2 text-left">Description</th>
+                <th className="border p-2">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="border p-2">1</td>
+                <td className="border p-2 font-mono">map()</td>
+                <td className="border p-2">Transform each element</td>
+                <td className="border p-2">
+                  <button onClick={mapExample} className="btn-primary text-xs">
+                    x → x*2
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="border p-2">2</td>
+                <td className="border p-2 font-mono">filter()</td>
+                <td className="border p-2">Keep elements matching condition</td>
+                <td className="border p-2">
+                  <button
+                    onClick={filterExample}
+                    className="btn-success text-xs"
+                  >
+                    Even Only
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="border p-2">3</td>
+                <td className="border p-2 font-mono">reduce()</td>
+                <td className="border p-2">Reduce to single value</td>
+                <td className="border p-2">
+                  <button onClick={reduceExample} className="btn-info text-xs">
+                    Sum All
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="border p-2">4</td>
+                <td className="border p-2 font-mono">slice()</td>
+                <td className="border p-2">Shallow copy of portion</td>
+                <td className="border p-2">
+                  <button
+                    onClick={sliceExample}
+                    className="btn-secondary text-xs"
+                  >
+                    [2:6)
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="border p-2">5</td>
+                <td className="border p-2 font-mono">concat()</td>
+                <td className="border p-2">Merge arrays</td>
+                <td className="border p-2">
+                  <button
+                    onClick={concatExample}
+                    className="btn-primary text-xs"
+                  >
+                    Merge All
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="border p-2">6</td>
+                <td className="border p-2 font-mono">...</td>
+                <td className="border p-2">Spread to merge</td>
+                <td className="border p-2">
+                  <button
+                    onClick={spreadExample}
+                    className="btn-success text-xs"
+                  >
+                    Spread Merge
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="border p-2">7</td>
+                <td className="border p-2 font-mono">flat()</td>
+                <td className="border p-2">Flatten nested arrays</td>
+                <td className="border p-2">
+                  <button onClick={flatExample} className="btn-warning text-xs">
+                    Flatten
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="border p-2">8</td>
+                <td className="border p-2 font-mono">join()</td>
+                <td className="border p-2">Convert to string</td>
+                <td className="border p-2">
+                  <button onClick={joinExample} className="btn-dark text-xs">
+                    Join "-"
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="border p-2">9</td>
+                <td className="border p-2 font-mono">flatMap()</td>
+                <td className="border p-2">Map + flatten</td>
+                <td className="border p-2">
+                  <button onClick={flatMapExample} className="btn-info text-xs">
+                    [x, x*2]
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="border p-2">10</td>
+                <td className="border p-2 font-mono">find()</td>
+                <td className="border p-2">First match</td>
+                <td className="border p-2">
+                  <button onClick={findExample} className="btn-success text-xs">
+                    x > 6
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="border p-2">11</td>
+                <td className="border p-2 font-mono">findIndex()</td>
+                <td className="border p-2">Index of first match</td>
+                <td className="border p-2">
+                  <button
+                    onClick={findIndexExample}
+                    className="btn-warning text-xs"
+                  >
+                    x > 7
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td className="border p-2">12</td>
+                <td className="border p-2 font-mono">indexOf()</td>
+                <td className="border p-2">Exact value index</td>
+                <td className="border p-2">
+                  <button
+                    onClick={indexOfExample}
+                    className="btn-secondary text-xs"
+                  >
+                    Find 7
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-          <tr>
-            <td>toReversed</td>
-            <td>provides a new array and that array value is in reverse</td>
-            <td>
-              <button>Reverse Example</button>
-            </td>
-          </tr>
+      {/* Modern Immutable Methods */}
+      <section>
+        <h2 className="text-2xl font-bold mb-3 text-purple-600">
+          Modern Immutable Methods (ES2023+)
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <button onClick={toSortedExample} className="btn-primary">
+            toSorted() → New Sorted Array
+          </button>
+          <button onClick={toReversedExample} className="btn-warning">
+            toReversed() → New Reversed
+          </button>
+          <button onClick={toSplicedExample} className="btn-info">
+            toSpliced(2,1,99) → Safe Splice
+          </button>
+        </div>
+      </section>
 
-          <tr>
-            <td>toSplice</td>
-            <td>
-              Provides a new array witth the value that has been to be
-              remove/added
-            </td>
-          </tr>
-        </table>
-      </ol>
+      {/* Tailwind-style button classes */}
+      <style jsx>{`
+        .btn-primary {
+          @apply px-3 py-1 bg-blue-600 text-white rounded text-xs hover:bg-blue-700 transition;
+        }
+        .btn-success {
+          @apply px-3 py-1 bg-green-600 text-white rounded text-xs hover:bg-green-700;
+        }
+        .btn-warning {
+          @apply px-3 py-1 bg-yellow-600 text-white rounded text-xs hover:bg-yellow-700;
+        }
+        .btn-danger {
+          @apply px-3 py-1 bg-red-600 text-white rounded text-xs hover:bg-red-700;
+        }
+        .btn-info {
+          @apply px-3 py-1 bg-cyan-600 text-white rounded text-xs hover:bg-cyan-700;
+        }
+        .btn-secondary {
+          @apply px-3 py-1 bg-gray-600 text-white rounded text-xs hover:bg-gray-700;
+        }
+        .btn-dark {
+          @apply px-3 py-1 bg-gray-800 text-white rounded text-xs hover:bg-gray-900;
+        }
+        .btn-error {
+          @apply px-3 py-1 bg-pink-600 text-white rounded text-xs hover:bg-pink-700;
+        }
+      `}</style>
     </div>
   );
 };
