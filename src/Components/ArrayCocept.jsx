@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Transition from "../Layout/Transition";
 
 const ArrayCocept = () => {
   // Initial States
@@ -563,4 +564,4 @@ const ArrayCocept = () => {
   );
 };
 
-export default ArrayCocept;
+export default Transition(ArrayCocept);
