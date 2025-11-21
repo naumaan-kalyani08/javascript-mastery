@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import JavascriptFunctions from "./JavascriptFunctions";
+import Transition from "../Layout/Transition";
 
 const CustomLoopComponent = () => {
   const [ForLoop, setForLoop] = useState(null);
@@ -176,4 +177,4 @@ const CustomLoopComponent = () => {
   );
 };
 
-export default CustomLoopComponent;
+export default Transition(CustomLoopComponent);

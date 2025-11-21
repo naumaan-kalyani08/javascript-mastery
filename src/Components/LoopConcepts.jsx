@@ -12,6 +12,7 @@ import {
   Clock,
   TrendingUp,
 } from "lucide-react";
+import Transition from "../Layout/Transition";
 
 const LoopConcepts = () => {
   const [activeTab, setActiveTab] = useState("for");
@@ -553,4 +554,4 @@ console.log('Has even number:', hasEven);`,
   );
 };
 
-export default LoopConcepts;
+export default Transition(LoopConcepts);

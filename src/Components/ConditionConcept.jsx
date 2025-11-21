@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ChevronRight, AlertCircle, CheckCircle } from "lucide-react";
+import Transition from "../Layout/Transition";
 
 const ConditionConcept = () => {
   const [ResultData, setResultData] = useState(null);
@@ -123,42 +124,73 @@ const ConditionConcept = () => {
             Conditional Statements in JavaScript
           </h1>
           <p className="text-xl text-gray-600">
-            Master if, else, ternary operators, and switch statements with interactive examples
+            Master if, else, ternary operators, and switch statements with
+            interactive examples
           </p>
         </div>
 
         {/* Concepts Table */}
         <div className="bg-white rounded-xl shadow-lg p-8 mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Concepts Overview</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            Concepts Overview
+          </h2>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="border-b-2 border-blue-500">
-                  <th className="text-left py-3 px-4 font-bold text-blue-600">Type</th>
-                  <th className="text-left py-3 px-4 font-bold text-blue-600">Purpose</th>
-                  <th className="text-left py-3 px-4 font-bold text-blue-600">Example Use Case</th>
+                  <th className="text-left py-3 px-4 font-bold text-blue-600">
+                    Type
+                  </th>
+                  <th className="text-left py-3 px-4 font-bold text-blue-600">
+                    Purpose
+                  </th>
+                  <th className="text-left py-3 px-4 font-bold text-blue-600">
+                    Example Use Case
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-b border-gray-200 hover:bg-blue-50 transition">
                   <td className="py-4 px-4 font-semibold text-gray-900">if</td>
-                  <td className="py-4 px-4 text-gray-700">Execute code if a condition is true</td>
-                  <td className="py-4 px-4 text-gray-600">Checking single condition</td>
+                  <td className="py-4 px-4 text-gray-700">
+                    Execute code if a condition is true
+                  </td>
+                  <td className="py-4 px-4 text-gray-600">
+                    Checking single condition
+                  </td>
                 </tr>
                 <tr className="border-b border-gray-200 hover:bg-blue-50 transition">
-                  <td className="py-4 px-4 font-semibold text-gray-900">if else</td>
-                  <td className="py-4 px-4 text-gray-700">Choose between two code blocks</td>
-                  <td className="py-4 px-4 text-gray-600">Multiple conditions (2+)</td>
+                  <td className="py-4 px-4 font-semibold text-gray-900">
+                    if else
+                  </td>
+                  <td className="py-4 px-4 text-gray-700">
+                    Choose between two code blocks
+                  </td>
+                  <td className="py-4 px-4 text-gray-600">
+                    Multiple conditions (2+)
+                  </td>
                 </tr>
                 <tr className="border-b border-gray-200 hover:bg-blue-50 transition">
-                  <td className="py-4 px-4 font-semibold text-gray-900">ternary operator</td>
-                  <td className="py-4 px-4 text-gray-700">Shorthand ? : for if else</td>
-                  <td className="py-4 px-4 text-gray-600">Quick conditional assignment</td>
+                  <td className="py-4 px-4 font-semibold text-gray-900">
+                    ternary operator
+                  </td>
+                  <td className="py-4 px-4 text-gray-700">
+                    Shorthand ? : for if else
+                  </td>
+                  <td className="py-4 px-4 text-gray-600">
+                    Quick conditional assignment
+                  </td>
                 </tr>
                 <tr className="hover:bg-blue-50 transition">
-                  <td className="py-4 px-4 font-semibold text-gray-900">switch</td>
-                  <td className="py-4 px-4 text-gray-700">Cleaner code for multiple scenarios</td>
-                  <td className="py-4 px-4 text-gray-600">Many specific cases</td>
+                  <td className="py-4 px-4 font-semibold text-gray-900">
+                    switch
+                  </td>
+                  <td className="py-4 px-4 text-gray-700">
+                    Cleaner code for multiple scenarios
+                  </td>
+                  <td className="py-4 px-4 text-gray-600">
+                    Many specific cases
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -173,18 +205,23 @@ const ConditionConcept = () => {
 
         {/* Practice Section */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Practice Exercises</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-8">
+            Practice Exercises
+          </h2>
           <div className="grid md:grid-cols-2 gap-8">
-            
             {/* Exercise 1: Number Check */}
             <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition">
               <div className="flex items-center mb-4">
                 <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mr-3">
                   1
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Number Classification</h3>
+                <h3 className="text-2xl font-bold text-gray-900">
+                  Number Classification
+                </h3>
               </div>
-              <p className="text-gray-600 mb-6">Check if a number is positive, negative, or zero using if-else</p>
+              <p className="text-gray-600 mb-6">
+                Check if a number is positive, negative, or zero using if-else
+              </p>
               <div className="space-y-3">
                 <input
                   type="number"
@@ -209,9 +246,13 @@ const ConditionConcept = () => {
                 <div className="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold mr-3">
                   2
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Grade Calculator</h3>
+                <h3 className="text-2xl font-bold text-gray-900">
+                  Grade Calculator
+                </h3>
               </div>
-              <p className="text-gray-600 mb-6">Convert percentage to letter grade using switch statement</p>
+              <p className="text-gray-600 mb-6">
+                Convert percentage to letter grade using switch statement
+              </p>
               <div className="space-y-3">
                 <input
                   type="number"
@@ -242,9 +283,13 @@ const ConditionConcept = () => {
                 <div className="w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center font-bold mr-3">
                   3
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Voting Eligibility</h3>
+                <h3 className="text-2xl font-bold text-gray-900">
+                  Voting Eligibility
+                </h3>
               </div>
-              <p className="text-gray-600 mb-6">Check if age meets voting requirements using ternary operator</p>
+              <p className="text-gray-600 mb-6">
+                Check if age meets voting requirements using ternary operator
+              </p>
               <div className="space-y-3">
                 <input
                   type="number"
@@ -275,9 +320,13 @@ const ConditionConcept = () => {
                 <div className="w-10 h-10 bg-yellow-600 text-white rounded-full flex items-center justify-center font-bold mr-3">
                   4
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Age Group Classifier</h3>
+                <h3 className="text-2xl font-bold text-gray-900">
+                  Age Group Classifier
+                </h3>
               </div>
-              <p className="text-gray-600 mb-6">Categorize age into groups using nested if-else</p>
+              <p className="text-gray-600 mb-6">
+                Categorize age into groups using nested if-else
+              </p>
               <div className="space-y-3">
                 <input
                   type="number"
@@ -297,7 +346,9 @@ const ConditionConcept = () => {
               {ageGroupResult && (
                 <div className="mt-4 flex items-center gap-3 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
                   <CheckCircle className="w-6 h-6 text-yellow-600 flex-shrink-0" />
-                  <p className="text-yellow-700 font-semibold">You are: {ageGroupResult}</p>
+                  <p className="text-yellow-700 font-semibold">
+                    You are: {ageGroupResult}
+                  </p>
                 </div>
               )}
             </div>
@@ -308,9 +359,13 @@ const ConditionConcept = () => {
                 <div className="w-10 h-10 bg-red-600 text-white rounded-full flex items-center justify-center font-bold mr-3">
                   5
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Day of Week Converter</h3>
+                <h3 className="text-2xl font-bold text-gray-900">
+                  Day of Week Converter
+                </h3>
               </div>
-              <p className="text-gray-600 mb-6">Convert number (1-7) to day name using switch statement</p>
+              <p className="text-gray-600 mb-6">
+                Convert number (1-7) to day name using switch statement
+              </p>
               <div className="grid md:grid-cols-3 gap-4">
                 <input
                   type="number"
@@ -330,7 +385,9 @@ const ConditionConcept = () => {
               {DayWeekResult && (
                 <div className="mt-4 flex items-center gap-3 bg-red-50 border border-red-200 rounded-lg p-4">
                   <CheckCircle className="w-6 h-6 text-red-600 flex-shrink-0" />
-                  <p className="text-red-700 font-semibold">The day is: {DayWeekResult}</p>
+                  <p className="text-red-700 font-semibold">
+                    The day is: {DayWeekResult}
+                  </p>
                 </div>
               )}
             </div>
@@ -351,4 +408,4 @@ const ConditionConcept = () => {
   );
 };
 
-export default ConditionConcept;
+export default Transition(ConditionConcept);

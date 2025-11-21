@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Transition from "../Layout/Transition";
 
 const RealWorldPractice = () => {
   const [Names, setNames] = useState([]);
@@ -23,4 +24,4 @@ const RealWorldPractice = () => {
   );
 };
 
-export default RealWorldPractice;
+export default Transition(RealWorldPractice);
