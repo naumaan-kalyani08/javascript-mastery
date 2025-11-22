@@ -1,25 +1,14 @@
-import { BrowserRouter, Route, Routes } from "react-router";
-import HomePage from "../pages/HomePage";
-import ConditionConcept from "../Components/ConditionConcept";
+// AppRouter.jsx
+import { BrowserRouter } from "react-router-dom";
 import Header from "../Components/Header";
-import LoopConcepts from "../Components/LoopConcepts";
 import "../style/Common.css";
-import CustomLoopComponent from "../Components/CustomLoopComponent";
-import ArrayCocept from "../Components/ArrayCocept";
-import RealWorldPractice from "../Components/RealWorldPractice";
+import AnimatedRoutes from "./AnimatedRoutes";
+
 const AppRouter = () => {
   return (
     <BrowserRouter>
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/conditional-concept" element={<ConditionConcept />} />
-        <Route path="/contact" element={<div>Contact Page</div>} />
-        <Route path="/loops" element={<LoopConcepts />} />
-        <Route path="/custom-loops" element={<CustomLoopComponent />} />
-        <Route path="/array" element={<ArrayCocept />} />
-        <Route path="/real-examples" element={<RealWorldPractice />} />
-      </Routes>
+      <AnimatedRoutes />
     </BrowserRouter>
   );
 };

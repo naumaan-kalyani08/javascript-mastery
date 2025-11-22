@@ -1,8 +1,8 @@
 import AppRouter from "./Router/Routes";
-
+import "./App.css";
 const App = () => {
   return (
-    <div>
+    <div className="animation-testing">
       <AppRouter />
     </div>
   );

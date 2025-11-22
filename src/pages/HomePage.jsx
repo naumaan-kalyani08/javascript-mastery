@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from "react";
-import {
-  Star,
-  Code,
-  Zap,
-  Users,
-  Award,
-  BookOpen,
-  Rocket,
-  Target,
-} from "lucide-react";
+import { Star, Code, Zap, Users, Award } from "lucide-react";
 import OfferPopup from "../components/OfferPopup";
+import Transition from "../Layout/Transition";
 
 const HomePage = () => {
   const [showOffer, setShowOffer] = useState(false);
@@ -453,4 +445,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Transition(HomePage);
